@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5faff;
+  color: #00334d;
+}
+
+.app-container {
+  text-align: center;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+.header {
+  padding: 10px 0;
+  background: #005fb8;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 900;
+  border-bottom: 3px solid #003f7a;
+}
+
+.sub-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 2px;
+  color: #004a7a;
+}
+
+.source-box {
+  text-align: right;
+  padding: 5px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005fb8;
+}
+
+.source-label {
+  color: yellow;
+  background: #333;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #d32f2f; /* Changed to Red for 'Live' feel */
+}
+
+.live-dot {
+  width: 12px;
+  height: 12px;
+  background: #00cc44;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.info-table, .main-table {
+  width: 90%;
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+
+.info-table th, .info-table td, .main-table th, .main-table td {
+  border: 1px solid #bcd7f7;
+  padding: 10px;
+}
+
+.info-table th, .main-table th {
+  background: #e8f2ff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #00334d;
+}
+
+/* Encircled styling for top row (Date, Time, Frequency) */
+.info-label {
+  font-weight: 900;
+  font-size: 1.4rem;
+  padding: 4px 15px;
+  color: #b35900; /* Distinct color for top row info */
+  background: #fff;
+  border: 2px solid #b35900;
+  border-radius: 50px; /* High radius for pill/circle shape */
+  display: inline-block;
+}
+
+.frequency-val {
+  color: #006400;
+  border-color: #006400;
+}
+
+/* Main Data Table Labels */
+.main-table td label {
+  font-weight: 900;
+  font-size: 1.6rem;
+  padding: 5px 15px;
+  color: #004b91;
+  background: #ffffff;
+  border: 2px solid #0077e6;
+  border-radius: 8px;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.total-val {
+    color: #cc0000 !important;
+    border-color: #cc0000 !important;
+}
+
+.info-bar {
+  background: #003f88;
+  color: white;
+  font-size: 1rem;
+  padding: 8px 0;
+  margin-top: 20px;
+}
+
+.footer-bar {
+  background: #006400;
+  color: white;
+  font-size: 1rem;
+  padding: 8px 0;
+  margin-top: 5px;
+}
+
+.bengali-text {
+  font-family: "Nirmala UI", sans-serif;
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .header { font-size: 1.4rem; }
+  .info-table, .main-table { width: 98%; }
+  .info-label, .main-table td label { font-size: 1.1rem; min-width: 70px; }
+}
