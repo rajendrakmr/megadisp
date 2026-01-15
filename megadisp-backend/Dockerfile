@@ -1,29 +1,18 @@
-FROM node:18-slim
+FROM oraclelinux:8-slim
 
-# oracle dependency
-RUN apt-get update && apt-get install -y \
-    libaio1 \
-    wget \
-    unzip \
-    && rm -rf /var/lib/apt/lists/*
+# Install Node.js
+RUN dnf install -y nodejs wget unzip libaio \
+    && dnf clean all
 
- 
-WORKDIR /opt/oracle
+# Oracle Instant Client (from Oracle repo)
+RUN dnf install -y oracle-instantclient-basiclite
 
-RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basiclite-linux.x64-21.9.0.0.0dbru.zip \
- && unzip instantclient-basiclite-linux.x64-21.9.0.0.0dbru.zip \
- && rm instantclient-basiclite-linux.x64-21.9.0.0dbru.zip \
- && ln -s /opt/oracle/instantclient_* /opt/oracle/instantclient
-
-ENV LD_LIBRARY_PATH=/opt/oracle/instantclient
-ENV PATH=/opt/oracle/instantclient:$PATH
+ENV LD_LIBRARY_PATH=/usr/lib/oracle/21/client64/lib
 
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
 COPY . .
-
 EXPOSE 3000
-
 CMD ["npm", "start"]
