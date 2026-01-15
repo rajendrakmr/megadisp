@@ -1,7 +1,7 @@
 FROM node:18-alpine
 
 # oracle dependency
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
     libaio1 \
     wget \
     unzip \
