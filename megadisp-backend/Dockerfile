@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18-slim
 
 # oracle dependency
 RUN sudo apt-get update && sudo apt-get install -y \
