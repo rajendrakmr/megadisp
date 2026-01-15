@@ -1,36 +1,32 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  mongodb:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
-    restart: unless-stopped
-
   backend:
     build: ./megadisp-backend
+    container_name: megadisp-backend
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - MONGODB_URI=mongodb://mongodb:27017/megadisp
-    depends_on:
-      - mongodb
-    volumes:
-      - ./megadisp-backend:/usr/src/app
-      - /usr/src/app/node_modules
+      NODE_ENV: production
+      PORT: 3000 
+      DB_USER: dplapp
+      DB_PASSWORD: dplapp
+      DB_CONNECT: 172.16.0.51:1521/pamsprod
     restart: unless-stopped
+    networks:
+      - megadisp-nt
 
   frontend:
     build: ./megadisp-frontend
+    container_name: megadisp-frontend
     ports:
       - "80:80"
     depends_on:
       - backend
     restart: unless-stopped
+    networks:
+      - megadisp-nt
 
-volumes:
-  mongodb_data:
+networks:
+  megadisp-nt:
+    driver: bridge
